@@ -15,17 +15,26 @@ Dim conf As Variant
     & Format(Now, "DDMMYY_hhmmss") _
     , xlOpenXMLWorkbookMacroEnabled
     Else
+Oboy:
+        On Error GoTo 0
         conf = MsgBox( _
         "Save with different name?", _
         vbYesNo, "Note Tree View")
         Select Case conf
             Case Is = vbYes
+                On Error Resume Next
                 cName = InputBox( _
                 "Name your file before save:", _
                 "Note Tree View")
                 ThisWorkbook.SaveAs _
                 Environ("userprofile") & "\Documents\" _
                 & cName, xlOpenXMLWorkbookMacroEnabled
+                If Err.Number <> 0 Then
+                    MsgBox "If you do not want to save" _
+                    & " to new file, please choose NO!" _
+                    , vbInformation, "Note Tree View"
+                    GoTo Oboy
+                End If
             Case Else
                 ThisWorkbook.SaveAs _
                 ThisWorkbook.Path _
