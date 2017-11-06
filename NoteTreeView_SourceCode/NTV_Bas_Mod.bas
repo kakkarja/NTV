@@ -36,9 +36,19 @@ Oboy:
                     GoTo Oboy
                 End If
             Case Else
-                ThisWorkbook.SaveAs _
-                ThisWorkbook.Path _
-                & ThisWorkbook.Name, xlOpenXMLWorkbookMacroEnabled
+                npath = Dir(ThisWorkbook.Path _
+                & "\" & ThisWorkbook.Name)
+                If npath <> "" Then
+                    ThisWorkbook.SaveAs _
+                    ThisWorkbook.Path _
+                    & "\" & ThisWorkbook.Name _
+                    , xlOpenXMLWorkbookMacroEnabled
+                Else
+                    ThisWorkbook.SaveAs _
+                    Environ("userprofile") _
+                    & "\Documents\" & ThisWorkbook.Name _
+                    , xlOpenXMLWorkbookMacroEnabled
+                End If
         End Select
     End If
 End Sub
