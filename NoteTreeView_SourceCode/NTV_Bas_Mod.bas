@@ -3,19 +3,9 @@ Option Explicit
 
 '''Workbook event Codes'''
 Private Sub Workbook_BeforeClose(Cancel As Boolean)
-Dim WSN As Integer
-Dim st As Integer
 Dim npath As String
 Dim cName As String
 Dim conf As Variant
-    With ActiveWorkbook
-    WSN = .Worksheets.Count
-        For st = 1 To WSN
-            With .Worksheets(st)
-                .Unprotect Environ("userprofile")
-            End With
-        Next st
-    End With
     Application.DisplayAlerts = False
     If Right(ThisWorkbook.Name, 4) = _
     "xltm" Then
@@ -42,23 +32,6 @@ Dim conf As Variant
                 & ThisWorkbook.Name, xlOpenXMLWorkbookMacroEnabled
         End Select
     End If
-WSN = 0
-st = 0
-End Sub
-
-Private Sub Workbook_Open()
-Dim WSN As Integer
-Dim st As Integer
-    With ActiveWorkbook
-    WSN = .Worksheets.Count
-        For st = 1 To WSN
-            With .Worksheets(st)
-                .Protect Environ("userprofile")
-            End With
-        Next st
-    End With
-WSN = 0
-st = 0
 End Sub
 
 '''Password setup for locking file Userform'''
