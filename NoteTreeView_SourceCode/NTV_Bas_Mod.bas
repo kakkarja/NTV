@@ -651,7 +651,7 @@ Fx2
 End Sub
 
 Private Sub UserForm_Initialize()
-ActiveSheet.Unprotect Environ("userprofile")
+ActiveSheet.Unprotect
 Cells.ColumnWidth = WiAd
 ActiveWindow.DisplayGridlines = False
 ChAp
@@ -659,7 +659,7 @@ End Sub
 
 Private Sub UserForm_Terminate()
     With ActiveSheet
-        .Protect Environ("userprofile")
+        .Protect Environ
         .EnableSelection = xlNoSelection
     End With
 End Sub
@@ -743,16 +743,16 @@ Set Pa = Bo1.ActiveSheet
     
     With Bo1
         If .ProtectStructure = True Then
-            .Unprotect Environ("userprofile")
+            .Unprotect
         End If
     End With
     With Pa
         If .ProtectContents = True Then
-            .Unprotect Environ("userprofile")
+            .Unprotect
         End If
         Set Bo2 = Workbooks.Add
         .Copy Bo2.Worksheets(1)
-        .Protect Environ("userprofile")
+        .Protect
     End With
     With Bo2
         .ActiveSheet.Protect
