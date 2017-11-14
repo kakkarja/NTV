@@ -1,5 +1,5 @@
-# NTV
-Note Tree View - Excel VBA Template/Workbook
+# Note Tree View
+**Outline note taking style built in Excel with VBA as a Template/Workbook**
 
 Please see the demo on https://youtu.be/wiChHB_mHos
 
